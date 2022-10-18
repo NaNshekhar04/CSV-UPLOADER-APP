@@ -55,8 +55,8 @@ module.exports.deleteFile = async function(req, res){
 }
 
 //Displaying the Uploaded Files Action
-module.exports.displayfiles =  function (req, res){
-    let files =  CSVFile.find({});
+module.exports.displayfiles = async function (req, res){
+    let files = await CSVFile.find({});
     return res.render('displayCSV', {
       title: 'Displaying Uploaded Files',
       files: files,
@@ -64,9 +64,9 @@ module.exports.displayfiles =  function (req, res){
   };
 
 //Displaying the Uploaded Files Data Action
-module.exports.displayData = function(req, res){
+module.exports.displayData = async function(req, res){
     try {
-        let file =  CSVFile.findById(req.params.id);
+        let file = await CSVFile.findById(req.params.id);
         let path = file.path;
         let results = [];
         fs.createReadStream(path)
@@ -80,7 +80,7 @@ module.exports.displayData = function(req, res){
           });
       } catch (error) {
         return res.status(500).json({
-          message: 'Internal error',
+          message: 'Internal Server error',
         });
       }
     };
