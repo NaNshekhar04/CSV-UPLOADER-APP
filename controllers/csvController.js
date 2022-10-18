@@ -5,8 +5,8 @@ const parser = require('csv-parser');
 
 
 //Displaying the Uploaded Files Action
-module.exports.viewFiles = async function(req, res){
-  let files =  await CSVFile.find({});
+module.exports.viewFiles =  function(req, res){
+  let files =   CSVFile.find({});
   return res.render('displayCSV', {
     title: 'View Uploaded Files',
     files: files,
@@ -15,26 +15,24 @@ module.exports.viewFiles = async function(req, res){
 
 
 //Uploading the File Action
-module.exports.upload = async function(req, res){
-    try{
-    CSVFile.uploadedFile(req, res, async (err) => {
+module.exports. upload =  function(req, res){
+    CSVFile.uploadedFile(req, res,  (err) => {
         if (req.file) {
-          let file = await CSVFile.create(req.file);
-          return res.status(200).json({
-            file: file,
-          });
+         CSVFile.create(req.file, function(err, csv){
+              if(err){
+                req.flash('error', 'Unuploaded')
+                return res.redirect('back');
+              }
+              req.flash('success', 'File uploaded successfully!');
+              console.log(csv);
+              return res.redirect('back');
+            });
         } else {
-          return res.status(400).json({
-            message: err,
-          });
+          req.flash('error', 'Unsupported File Format!');
+          return res.redirect('back');
         }
       });
-    } catch (error) {
-      return res.status(500).json({
-        message: 'Internal Server Error',
-      });
-    }
-}
+    } 
 
 //Deleting the Uploaded File Action
 module.exports.deleteFile = async function(req, res){
@@ -44,22 +42,19 @@ module.exports.deleteFile = async function(req, res){
         fs.unlinkSync(file.path);
         file.remove();
       }
-      return res.status(200).json({
-        message: 'SuccessFully Deleted the File',
-      });
-    } catch (error) {
-      return res.status(500).json({
-        message: 'Internal Server Error',
-      });
-    }
-}
+    req.flash('success', 'File Deleted');
+    return res.redirect('back');
+  } catch (error) {
+    return res.redirect('back');
+  }
+};
 
 
 
 //Displaying the Uploaded Files Data Action
-module.exports.displayData = async function(req, res){
-    try {
-        let file = await CSVFile.findById(req.params.id);
+module.exports.displayData =  function(req, res){
+   
+       CSVFile.findById(req.params.id, function (err, file) {;
         let path = file.path;
         let results = [];
         fs.createReadStream(path)
@@ -71,9 +66,5 @@ module.exports.displayData = async function(req, res){
               data: results,
             });
           });
-      } catch (error) {
-        return res.status(500).json({
-          message: 'Internal Server error',
-        });
-      }
-    };
+      });
+    }

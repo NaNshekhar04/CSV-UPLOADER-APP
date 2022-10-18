@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Here you can view your csv Files</h1>
     <div class="container">
         <div class="row text-center m-3">
           <h1>List of Uploaded CSV Files:</h1>
@@ -16,8 +15,9 @@
       <div class="container">
         <div class="row">
           <ul class="list-group">
+            <% if(files.length > 0){%>
             <% for(let file of files){%>
-            <li class="list-group-item d-flex justify-content-between">
+            <li class="list-group-item d-flex justify-content-between"> 
               <div class="col-md-6">
                 <a
                   class="text-primary fs-4 text-capitalize"
@@ -27,12 +27,21 @@
                 </a>
               </div>
               <div class="col-md-2">
-                <button type="button" class="btn btn-danger">
-                  <a href="/csv/deleteFile/<%=file.id%>"  class="link-light">Delete</a>
-                </button>
-              </div>
+                <a href="/csv/displayData/<%=file.id%>" class="link-light"
+                  ><button type="button" class="btn btn-secondary">
+                    View file
+                  </button></a>
+                </div>
+                
+                <div class="col-md-2">
+                  <a href="/csv/delete/<%=file.id%>" class="link-light">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                  </a>
+                </div>
             </li>
-            <%}%>
+            <%}%> <%}else{%>
+              <h2 class="text-info">Please Upload Your Files</h2>
+              <%}%>
           </ul>
         </div>
       </div>
