@@ -6,7 +6,7 @@ const parser = require('csv-parser');
 
 //Displaying the Uploaded Files Action
 module.exports.viewFiles = async function(req, res){
-    let files =  await CSVFile.find({});
+  let files =  await CSVFile.find({});
   return res.render('displayCSV', {
     title: 'View Uploaded Files',
     files: files,

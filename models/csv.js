@@ -46,7 +46,6 @@ const fileSchema = new mongoose.Schema({
       cb(null, file.fieldname + '-' + Date.now());
     },
   });
-  //multer csv filter
   let csvFilter = (req, file, cb) => {
     if (file.originalname.split('.')[1] === 'csv') {
       cb(null, true);
@@ -55,11 +54,10 @@ const fileSchema = new mongoose.Schema({
     }
   };
   
-  //define static functions/methods
   fileSchema.statics.uploadedFile = multer({
     storage: storage,
     fileFilter: csvFilter,
   }).single('csv');
-  fileSchema.statics.filePath =filePath;
+  fileSchema.statics.FILE_PATH =filePath;
   const CSVFILE = mongoose.model('CSVFILE', fileSchema);
   module.exports = CSVFILE;
