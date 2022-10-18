@@ -4,11 +4,13 @@
   "description": "An application which lets you upload and view CSV files data",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "shekhar",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.8",
     "express": "^4.18.2",
     "nodemon": "^2.0.20"
   }
