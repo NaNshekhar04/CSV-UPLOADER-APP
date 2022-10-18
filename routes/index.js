@@ -4,4 +4,6 @@ const homeController = require('../controllers/homeController');
 
 router.get('/', homeController.home);
 
+router.use('/csv', require('./csv'));
+
 module.exports = router;
