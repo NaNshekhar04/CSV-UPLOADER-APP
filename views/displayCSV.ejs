@@ -8,18 +8,33 @@
 </head>
 <body>
     <h1>Here you can view your csv Files</h1>
-    <ul>
-        <% for(let file of files){%>
-        <li>
-          <h2>
-            <a href="/csv/displayData/<%=file.id%>">
-              <h4><%= file.originalname%></h4>
-            </a>
-            <span class="delete"> <a href="/csv/deleteFiles/<%=file.id%>">Delete</a></span>
-          </h2>
-        </li>
-        <%}%>
-      </ul>
-
+    <div class="container">
+        <div class="row text-center m-3">
+          <h1>List of Uploaded CSV Files:</h1>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <ul class="list-group">
+            <% for(let file of files){%>
+            <li class="list-group-item d-flex justify-content-between">
+              <div class="col-md-6">
+                <a
+                  class="text-primary fs-4 text-capitalize"
+                  href="/csv/displayData/<%=file.id%>"
+                >
+                  <%= file.originalname%>
+                </a>
+              </div>
+              <div class="col-md-2">
+                <button type="button" class="btn btn-danger">
+                  <a href="/csv/deleteFile/<%=file.id%>"  class="link-light">Delete</a>
+                </button>
+              </div>
+            </li>
+            <%}%>
+          </ul>
+        </div>
+      </div>
 </body>
 </html>

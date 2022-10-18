@@ -7,7 +7,6 @@ const csvController = require('../controllers/csvController');
 router.get('/viewfiles', csvController.viewFiles);
 router.get('/delete/:id', csvController.deleteFile);
 router.get('/displaydata/:id', csvController.displayData);
-router.get('/displayfiles', csvController.displayfiles);
 //POST ROUTES
 router.post('/upload', csvController.upload);
 

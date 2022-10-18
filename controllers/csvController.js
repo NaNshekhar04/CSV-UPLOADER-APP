@@ -1,10 +1,10 @@
 const CSVFile = require('../models/csv');
-const parser = require('csv-parser');
 const fs = require('fs');
+const parser = require('csv-parser');
 
 
 
-//Viewing the File Action
+//Displaying the Uploaded Files Action
 module.exports.viewFiles = async function(req, res){
     let files =  await CSVFile.find({});
   return res.render('displayCSV', {
@@ -54,14 +54,7 @@ module.exports.deleteFile = async function(req, res){
     }
 }
 
-//Displaying the Uploaded Files Action
-module.exports.displayfiles = async function (req, res){
-    let files = await CSVFile.find({});
-    return res.render('displayCSV', {
-      title: 'Displaying Uploaded Files',
-      files: files,
-    });
-  };
+
 
 //Displaying the Uploaded Files Data Action
 module.exports.displayData = async function(req, res){
@@ -73,7 +66,7 @@ module.exports.displayData = async function(req, res){
           .pipe(parser({ delimiter: ',' }))
           .on('data', (data) => results.push(data))
           .on('end', () => {
-            return res.render('csv_data', {
+            return res.render('csvData', {
               title: 'File Data',
               data: results,
             });

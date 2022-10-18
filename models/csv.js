@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
-const filePath = path.join('/uploads/files/csv');
+const filePath = path.join('/uploads/files');
 
 const fileSchema = new mongoose.Schema({
     fieldname: {
@@ -10,7 +10,7 @@ const fileSchema = new mongoose.Schema({
     },
     originalname: {
       type: String,
-      required: true,
+      required: true, 
     },
     encoding: {
       type: String,
