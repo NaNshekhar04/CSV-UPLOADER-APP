@@ -2,11 +2,17 @@ const express = require('express');
 const port = 5000;
 const app = express();
 
+const expressLayouts = require('express-ejs-layouts');
 
 // setting up the view engine.
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
+//Setting Up the layouts
+app.use(expressLayouts);
+
+
+//All my Entry Routes
 app.use('/', require('./routes'));
 
 
