@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Filtering and Display File Data in Tables</h1>
+    <div>
+        <input type="text" id="input" placeholder="Search for names.. " />
+        </p>
+        <table id="table" class="csv">
+            <thead>
+                <% for(let i in data){%>
+                    <tr>
+                        <% let value=data[i] %>
+                            <% for(let j in value){%>
+                                <th>
+                                    <%=j%>
+                                </th>
+                                <%}%>
+                                    <%break%>
+                    </tr>
+                    <%}%>
+            </thead>
+            <tbody>
+                <% for(let i in data){%>
+                    <tr>
+                        <% let value=data[i] %>
+                            <% for(let j in value){%>
+                                <td>
+                                    <%=value[j]%>
+                                </td>
+                                <%}%>
+                    </tr>
+                    <%}%>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

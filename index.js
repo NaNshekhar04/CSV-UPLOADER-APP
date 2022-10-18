@@ -12,6 +12,10 @@ app.set('views', 'views');
 app.use(expressLayouts);
 
 
+app.use(express.static('assets'));
+
+app.use('/uploads/csv', express.static(__dirname + '/uploads/csv'));
+
 //All my Entry Routes
 app.use('/', require('./routes'));
 

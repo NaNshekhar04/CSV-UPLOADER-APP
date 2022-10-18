@@ -1,11 +1,7 @@
 const CSVFile = require('../models/csv');
+const parser = require('csv-parser');
 const fs = require('fs');
 
-module.exports.uploader =  function(req, res){
-    return res.render('uploadCSV', {
-        title: 'CSV | upload',
-    });
-    };
 
 
 //Viewing the File Action
@@ -57,3 +53,34 @@ module.exports.deleteFile = async function(req, res){
       });
     }
 }
+
+//Displaying the Uploaded Files Action
+module.exports.displayfiles =  function (req, res){
+    let files =  CSVFile.find({});
+    return res.render('displayCSV', {
+      title: 'Displaying Uploaded Files',
+      files: files,
+    });
+  };
+
+//Displaying the Uploaded Files Data Action
+module.exports.displayData = function(req, res){
+    try {
+        let file =  CSVFile.findById(req.params.id);
+        let path = file.path;
+        let results = [];
+        fs.createReadStream(path)
+          .pipe(parser({ delimiter: ',' }))
+          .on('data', (data) => results.push(data))
+          .on('end', () => {
+            return res.render('csv_data', {
+              title: 'File Data',
+              data: results,
+            });
+          });
+      } catch (error) {
+        return res.status(500).json({
+          message: 'Internal error',
+        });
+      }
+    };
