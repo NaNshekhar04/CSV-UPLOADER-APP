@@ -51,7 +51,7 @@ const fileSchema = new mongoose.Schema({
     if (file.originalname.split('.')[1] === 'csv') {
       cb(null, true);
     } else {
-      cb('Not a CSV File!!', false);
+      cb('Upload a Valid CSV File', false);
     }
   };
   

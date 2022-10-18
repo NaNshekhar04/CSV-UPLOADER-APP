@@ -8,5 +8,18 @@
 </head>
 <body>
     <h1>Here you can view your csv Files</h1>
+    <ul>
+        <% for(let file of files){%>
+        <li>
+          <h2>
+            <a href="/csv/displayData/<%=file.id%>">
+              <h4><%= file.originalname%></h4>
+            </a>
+            <span class="delete"> <a href="/csv/delete/<%=file.id%>">Delete</a></span>
+          </h2>
+        </li>
+        <%}%>
+      </ul>
+
 </body>
 </html>
