@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
-const filePath = path.join('/uploads/files');
-
+const FILE_PATH = path.join('/uploads/csv');
 const fileSchema = new mongoose.Schema({
     fieldname: {
       type: String,
@@ -38,9 +37,9 @@ const fileSchema = new mongoose.Schema({
     },
   });
   
-  let storage = multer.diskStorage({
+  var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, path.join(__dirname, '..', filePath));
+      cb(null, './uploads/csv' );
     },
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now());
@@ -58,6 +57,6 @@ const fileSchema = new mongoose.Schema({
     storage: storage,
     fileFilter: csvFilter,
   }).single('csv');
-  fileSchema.statics.FILE_PATH =filePath;
+  fileSchema.statics.filePath =FILE_PATH;
   const CSVFILE = mongoose.model('CSVFILE', fileSchema);
   module.exports = CSVFILE;

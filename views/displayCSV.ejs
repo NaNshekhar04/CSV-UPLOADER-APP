@@ -9,7 +9,8 @@
 <body>
     <div class="container">
         <div class="row text-center m-3">
-          <h1>List of Uploaded CSV Files:</h1>
+          <!-- <h1>List of Uploaded CSV Files:</h1> -->
+          <button type="button" class="btn btn-lg btn-outline ">List Of Uploaded CSV'S 📂</button>
         </div>
       </div>
       <div class="container">
@@ -21,26 +22,28 @@
               <div class="col-md-6">
                 <a
                   class="text-primary fs-4 text-capitalize"
-                  href="/csv/displayData/<%=file.id%>"
-                >
+                  href="/csv/displaydata/<%=file.id%>">
+                
                   <%= file.originalname%>
                 </a>
               </div>
               <div class="col-md-2">
-                <a href="/csv/displayData/<%=file.id%>" class="link-light"
-                  ><button type="button" class="btn btn-secondary">
+                <a href="/csv/displaydata/<%=file.id%>" class="link-light"
+                  ><button type="button" class="btn btn-secondary"><i class="fa fa-bars"></i>
                     View file
                   </button></a>
                 </div>
                 
                 <div class="col-md-2">
                   <a href="/csv/delete/<%=file.id%>" class="link-light">
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
                   </a>
                 </div>
             </li>
             <%}%> <%}else{%>
-              <h2 class="text-info">Please Upload Your Files</h2>
+              <div class="alert alert-danger" role="alert">
+               UHH Ohh😨!!<a href="#" class="alert-link"></a>  Please Upload Your Files
+              </div>
               <%}%>
           </ul>
         </div>

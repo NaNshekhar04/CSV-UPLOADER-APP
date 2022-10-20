@@ -10,16 +10,7 @@
 
 <body>
   <h1>Filtering and Display File Data in Tables</h1>
-  <div class="container">
-    <div class="row text-center m-3">
-      <div class="col-md-10">
-        <h3>
-          Filter :
-          <input type="text" id="input" class="form-control" placeholder="Search" />
-        </h3>
-      </div>
-    </div>
-  </div>
+
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="table-responsive">
@@ -30,30 +21,29 @@
           <thead class="table-dark">
             <% for(let i in data){%>
               <tr>
-                <% let value=data[i] %>
-                  <% for(let j in value){%>
-                    <th>
-                      <%=j%>
-                    </th>
-                    <%}%>
-                      <%break%>
+                <% let value = data[i] %>
+              
+                <% for(let j in value){%>
+                <th style="cursor:pointer" data-sortable="true"><%=j%></th>
+                <%}%> <%break%>
               </tr>
               <%}%>
-          </thead>
-          <tbody class="table-success">
-            <% for(let i in data){%>
+            </thead>
+            <tbody class="table-success">
+              <% for(let i in data){%>
               <tr>
-                <% let value=data[i] %>
-                  <% for(let j in value){%>
-                    <td class="p-3">
-                      <%=value[j]%>
-                    </td>
-                    <%}%>
+                <% let value = data[i] %>
+                <% for(let j in value){%>
+                <td class="p-3"><%=value[j]%></td>
+                <%}%>
               </tr>
               <%}%>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  </div>
+     </div>    
+  </body>
+  </html>
+    

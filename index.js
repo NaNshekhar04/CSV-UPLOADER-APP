@@ -1,7 +1,6 @@
 const express = require('express');
 const port = 5000;
 const app = express();
-
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 
@@ -16,6 +15,7 @@ const flashFunc = require('./config/flash');
 app.use(express.urlencoded());
 app.use(cookieParser());
 
+app.use(express.static('./assets'));
 
 // setting up the view engine.
 app.set('view engine', 'ejs');
@@ -35,14 +35,15 @@ app.use(
 
 
 //Setting static assets folder
-app.use(express.static('assets'));
+// app.use(express.static(path.join(__dirname, './assets')));
+
 
 //Setting Up flash module
 app.use(flash());
 app.use(flashFunc.setFlash);
 
 //Setting path for file to be uploaded by browser
-app.use('/uploads/csv', express.static(__dirname + '/uploads/csv'));
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 //extract style and script from Layouts
 app.set('layout extractStyles', true);
