@@ -9,7 +9,9 @@
 </head>
 
 <body>
-  <h1>Filtering and Display File Data in Tables</h1>
+  <br>
+  <button type="button" class="btn btn-lg btn-outline" style="text-align:center" >Filtering and Displaying Data of Uploaded CSV'S 📂</button>
+
 
   <div class="container">
     <div class="row d-flex justify-content-center">
@@ -29,7 +31,7 @@
               </tr>
               <%}%>
             </thead>
-            <tbody class="table-success">
+            <tbody class="table-responsive">
               <% for(let i in data){%>
               <tr>
                 <% let value = data[i] %>

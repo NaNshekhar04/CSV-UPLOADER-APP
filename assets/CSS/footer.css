@@ -1,0 +1,7 @@
+body{
+    background-image: linear-gradient(to right, rgb(229, 186, 229) , rgb(241, 228, 228), rgb(255, 255, 158));
+}
+
+#fileName{
+    text-decoration: none;
+}

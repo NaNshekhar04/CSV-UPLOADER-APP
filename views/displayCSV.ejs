@@ -19,9 +19,9 @@
             <% if(files.length > 0){%>
             <% for(let file of files){%>
             <li class="list-group-item d-flex justify-content-between"> 
-              <div class="col-md-6">
+              <div class="col-md-6 " >
                 <a
-                  class="text-primary fs-4 text-capitalize"
+                  class="text-primary fs-4 text-capitalize" id="fileName" style="color:black ;"
                   href="/csv/displaydata/<%=file.id%>">
                 
                   <%= file.originalname%>
