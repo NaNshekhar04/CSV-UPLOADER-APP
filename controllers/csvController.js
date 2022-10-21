@@ -39,6 +39,7 @@ module.exports.deleteFile = async function (req, res) {
   try {
     let file = await CSVFile.findById(req.params.id);
     if (file) {
+      fs.unlinkSync(file.path);
       file.remove();
     }
     req.flash('success', 'File Deleted');
