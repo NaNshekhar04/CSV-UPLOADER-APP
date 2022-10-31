@@ -1,12 +1,14 @@
-body{
-    background-image: linear-gradient(to right, rgb(229, 186, 229) , rgb(241, 228, 228), rgb(255, 255, 158));
+/* STYLINGS FOR MY FOOTER  */
+
+body {
+    background-image: linear-gradient(to right, rgb(229, 186, 229), rgb(241, 228, 228), rgb(255, 255, 158));
 }
 
-#fileName{
+#fileName {
     text-decoration: none;
 }
 
-.footerClass{
+.footerClass {
     position: absolute;
     width: 100%;
     bottom: 0%;

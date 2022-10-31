@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,45 +8,55 @@
   <title>Document</title>
   <link rel="stylesheet" href="/CSS/footer.css">
 </head>
-<body>
-  <footer id="fixed-bottom" class="flex-shrink-0 py-2  text-white d-flex flex-column footerClass " style="background-color: black">
-      <div class="containerFooter text-center ">
-        <small> &copy; Made with ❤️ By Shekhar</small>
-      </div>
 
-      <!-- scripts -->
-      <%-script%>
+<body>
+
+  <!-- Footer of our application -->
+
+  <footer id="fixed-bottom" class="flex-shrink-0 py-2  text-white d-flex flex-column footerClass "
+    style="background-color: black">
+    <div class="containerFooter text-center ">
+      <small> &copy; Made with ❤️ By Shekhar</small>
+    </div>
+
+    <!-- scripts -->
+    <%-script%>
       <!-- bootstrap -->
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-        crossorigin="anonymous"
-      ></script>
+        crossorigin="anonymous"></script>
       <!-- bootstrap table -->
       <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
       <script>
-        <%if(flash.success && flash.success.length ){%>
+
+          // Handling flash conditions, positionings and features 
+
+        <%if (flash.success && flash.success.length) {%>
           new Noty({
-            theme : 'relax',
-            text : '<%= flash.success%>',
-            type : 'success',
-            layout : 'topRight',
-            timeout : 1500,
+            theme: 'relax',
+            text: '<%= flash.success%>',
+            type: 'success',
+            layout: 'topRight',
+            timeout: 1500,
             closeWith: ['click', 'button'],
-        }).show();
+          }).show();
             <% } %>
-            <% if(flash.error && flash.error.length ){%>
-             // error flash
-        new Noty({
-            theme : 'relax',
-            text : '<%= flash.error%>',
-            type : 'error',
-            layout : 'topRight',
-            timeout : 1500,
+            <% if (flash.error && flash.error.length) {%>
+
+
+          // Creating Alerts and Notifications via Noty 
+
+          new Noty({
+            theme: 'relax',
+            text: '<%= flash.error%>',
+            type: 'error',
+            layout: 'topRight',
+            timeout: 1500,
             closeWith: ['click', 'button'],
-        }).show();
+          }).show();
         <%}%>
       </script>
-    </footer>
+  </footer>
 </body>
+
 </html>

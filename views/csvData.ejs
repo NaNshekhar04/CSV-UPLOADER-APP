@@ -12,6 +12,7 @@
   <br>
   <button type="button" class="btn btn-lg btn-outline" style="text-align:center" >Filtering and Displaying Data of Uploaded CSV'S 📂</button>
 
+    <!-- ADDING BOOTSTRAP INBUILT FUNCTIONS FOR OUR TABLE FUNCTIONALITIES  -->
 
   <div class="container">
     <div class="row d-flex justify-content-center">
@@ -21,10 +22,15 @@
           data-page-list="[10, 25, 50, 100, all]" data-search-highlight="true"
           class="table table-striped table-hover fs-6 text-capitalize">
           <thead class="table-dark">
+
+            <!-- LOOPING THROUGH THE DATA ADDING FEW FEATURES  -->
+
             <% for(let i in data){%>
               <tr>
                 <% let value = data[i] %>
               
+                <!-- LOOPING THROUGH THE HEADINGS ADDING FEW FEATURES  -->
+
                 <% for(let j in value){%>
                 <th style="cursor:pointer" data-sortable="true"><%=j%></th>
                 <%}%> <%break%>

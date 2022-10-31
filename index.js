@@ -3,18 +3,19 @@ const port = 5000;
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
-
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
+// requiring mongoose and flash  
 const db = require('./config/mongoose');
 const flash = require('connect-flash');
 const flashFunc = require('./config/flash');
 
-
+// parsing incoming data payloads via requests
 app.use(express.urlencoded());
 app.use(cookieParser());
 
+// static route to assets 
 app.use(express.static('./assets'));
 
 // setting up the view engine.
@@ -26,16 +27,12 @@ app.use(expressLayouts);
 
 //Using express session
 app.use(
-    session({
-      secret: 'something',
-      resave: true,
-      saveUninitialized: true,
-    })
-  );
-
-
-//Setting static assets folder
-// app.use(express.static(path.join(__dirname, './assets')));
+  session({
+    secret: 'something',
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
 
 //Setting Up flash module
@@ -53,11 +50,11 @@ app.set('layout extractScripts', true);
 //All my Entry Routes
 app.use('/', require('./routes'));
 
-
-app.listen(port, function(err){
-    if(err){
-        console.log('Error in running the server!')
-    }else{
-        console.log(`Server Up and running at port:: ${port}`);
-    }
+// Runnin of our application Condition 
+app.listen(port, function (err) {
+  if (err) {
+    console.log('Error in running the server!')
+  } else {
+    console.log(`Server Up and running at port:: ${port}`);
+  }
 })
