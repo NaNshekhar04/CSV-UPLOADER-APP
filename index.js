@@ -1,5 +1,5 @@
 const express = require('express');
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
@@ -51,10 +51,10 @@ app.set('layout extractScripts', true);
 app.use('/', require('./routes'));
 
 // Runnin of our application Condition 
-app.listen(port, function (err) {
+app.listen(PORT, function (err) {
   if (err) {
     console.log('Error in running the server!')
   } else {
-    console.log(`Server Up and running at port:: ${port}`);
+    console.log(`Server Up and running at port:: ${PORT}`);
   }
 })
