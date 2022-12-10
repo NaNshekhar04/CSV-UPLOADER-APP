@@ -1,6 +1,7 @@
 const express = require('express');
 const PORT = process.env.PORT || 5000;
 const app = express();
+const dotenv = require('dotenv').config();
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const cookieParser = require('cookie-parser');
