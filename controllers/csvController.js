@@ -37,6 +37,7 @@ module.exports.upload = (req, res) => {
 
 //Deleting the Uploaded File Action
 module.exports.deleteFile = async function (req, res) {
+  console.log('Here')
   try {
     let file = await CSVFile.findById(req.params.id);
     if (file) {
