@@ -2,6 +2,7 @@
 const CSVFile = require('../models/csv');
 const fs = require('fs');
 const parser = require('csv-parser');
+const db = require('../config/mongoose');
 
 
 //Displaying the Uploaded Files Action
@@ -39,7 +40,8 @@ module.exports.upload = (req, res) => {
 module.exports.deleteFile = async function (req, res) {
   console.log('Here')
   try {
-    let file = await CSVFile.findById(req.params.id);
+    let file = await CSVFile.findByIdAndDelete(req.params.id);
+    console.log(file)
     if (file) {
       fs.unlinkSync(file.path);
       file.remove();
@@ -55,6 +57,7 @@ module.exports.deleteFile = async function (req, res) {
 // Displaying the Uploaded Files Data Action
 module.exports.displayData = function (req, res) {
   CSVFile.findById(req.params.id, function (err, file) {
+    console.log(file);
     let path = file.path;
     let results = [];
     fs.createReadStream(path)
