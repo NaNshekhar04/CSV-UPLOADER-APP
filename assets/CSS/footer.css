@@ -15,3 +15,11 @@ body {
     height: 7%;
 
 }
+
+#fixed-bottom{
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    height: 7%;
+
+}

@@ -1,54 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/CSS/footer.css">
 </head>
+
 <body>
 
   <!-- CONTAINER FOR DISPLAYING THE LIST OF CSV FILES WITH THEIR NAMES VIEW FILE AND DELETE BUTTON  -->
-  
-    <div class="container">
-        <div class="row text-center m-3">
-          <button type="button" class="btn btn-lg btn-outline ">List Of Uploaded CSV'S 📂</button>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <ul class="list-group">
-            <% if(files.length > 0){%>
-            <% for(let file of files){%>
-            <li class="list-group-item d-flex justify-content-between"> 
-              <div class="col-md-6 " >
-                <a
-                  class="text-primary fs-4 text-capitalize" id="fileName" style="color:black ;"
+
+  <div class="container">
+    <div class="row text-center m-3">
+      <button type="button" class="btn btn-lg btn-outline ">List Of Uploaded CSV'S 📂</button>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <ul class="list-group">
+        <% if(files.length> 0){%>
+          <% for(let file of files){%>
+            <li class="list-group-item d-flex justify-content-between">
+              <div class="col-md-6 ">
+                <a class="text-primary fs-4 text-capitalize" id="fileName" style="color:black ;"
                   href="/csv/displaydata/<%=file.id%>">
-                
+
                   <%= file.originalname%>
                 </a>
               </div>
               <div class="col-md-2">
-                <a href="/csv/displaydata/<%=file.id%>" class="link-light"
-                  ><button type="button" class="btn btn-secondary"><i class="fa fa-bars"></i>
+                <a href="/csv/displaydata/<%=file.id%>" class="link-light"><button type="button"
+                    class="btn btn-secondary"><i class="fa fa-bars"></i>
                     View file
                   </button></a>
-                </div>
-                
-                <div class="col-md-2">
-                  <a href="/csv/delete/<%=file.id%>" class="link-light">
-                    <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-                  </a>
-                </div>
-            </li>
-            <%}%> <%}else{%>
-              <div class="alert alert-danger" role="alert">
-               UHH Ohh😨!!<a href="#" class="alert-link"></a>  Please Upload Your Files
               </div>
-              <%}%>
-          </ul>
-        </div>
-      </div>
+
+              <div class="col-md-2">
+                <a href="/csv/delete/<%=file.id%>" class="link-light">
+                  <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                </a>
+              </div>
+            </li>
+            <%}%>
+              <%}else{%>
+                <div class="alert alert-danger" role="alert">
+                  UHH Ohh😨!!<a href="#" class="alert-link"></a> Please Upload Your Files
+                </div>
+                <%}%>
+      </ul>
+    </div>
+  </div>
 </body>
+
 </html>

@@ -10,9 +10,10 @@
 
 <body>
   <br>
-  <button type="button" class="btn btn-lg btn-outline" style="text-align:center" >Filtering and Displaying Data of Uploaded CSV'S 📂</button>
+  <button type="button" class="btn btn-lg btn-outline" style="text-align:center">Filtering and Displaying Data of
+    Uploaded CSV'S 📂</button>
 
-    <!-- ADDING BOOTSTRAP INBUILT FUNCTIONS FOR OUR TABLE FUNCTIONALITIES  -->
+  <!-- ADDING BOOTSTRAP INBUILT FUNCTIONS FOR OUR TABLE FUNCTIONALITIES  -->
 
   <div class="container">
     <div class="row d-flex justify-content-center">
@@ -27,31 +28,36 @@
 
             <% for(let i in data){%>
               <tr>
-                <% let value = data[i] %>
-              
-                <!-- LOOPING THROUGH THE HEADINGS ADDING FEW FEATURES  -->
+                <% let value=data[i] %>
 
-                <% for(let j in value){%>
-                <th style="cursor:pointer" data-sortable="true"><%=j%></th>
-                <%}%> <%break%>
+                  <!-- LOOPING THROUGH THE HEADINGS ADDING FEW FEATURES  -->
+
+                  <% for(let j in value){%>
+                    <th style="cursor:pointer" data-sortable="true">
+                      <%=j%>
+                    </th>
+                    <%}%>
+                      <%break%>
               </tr>
               <%}%>
-            </thead>
-            <tbody class="table-responsive">
-              <% for(let i in data){%>
+          </thead>
+          <tbody class="table-responsive">
+            <% for(let i in data){%>
               <tr>
-                <% let value = data[i] %>
-                <% for(let j in value){%>
-                <td class="p-3"><%=value[j]%></td>
-                <%}%>
+                <% let value=data[i] %>
+                  <% for(let j in value){%>
+                    <td class="p-3">
+                      <%=value[j]%>
+                    </td>
+                    <%}%>
               </tr>
               <%}%>
-            </tbody>
-          </table>
-          </div>
-        </div>
+          </tbody>
+        </table>
       </div>
-     </div>    
-  </body>
-  </html>
-    
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
